@@ -1,6 +1,6 @@
 # japanica-notebook
 
-A docker image and container of Jupyter Notebook. The environment uses the [takahish/japonica-warehouse](https://github.com/takahish/japonica-warehouse) as database. The database is assumed that the data in the database is used in a training machine learning model or an autonomous AI system.
+A docker image and container of Jupyter Notebook. The environment uses the [japonica-warehouse](https://github.com/takahish/japonica-notebook) as a database. It is assumed that the data in the database can be used in a training machine learning model or an autonomous AI system.
 
 ## Table of content
 
@@ -21,14 +21,14 @@ $ git clone https://github.com/takahish/japonica-notebook.git
 # Update submodules.
 $ git submodule update --init --recursive
 
-# Build postgres-cstore image.
+# Build japonica-notebook image.
 $ docker-compose -f docker-compose-for-build.yml build
 ```
 
 ### Run container
 
 ```shell
-# Detach posgres-cstore.
+# Detach japonica-notebook.
 # Here is the commands if you build image manually.
 $ docker-compose -f docker-compose-for-build.yml up -d
 
@@ -37,7 +37,7 @@ $ docker-compose -f docker-compose-for-build.yml up -d
 $ docker-compose up -d
 ```
 
-## Usage notebook with postgres-cstore
+## Usage notebook with japonica-notebook
 
 You can access http://localhost:8801/login?token=jnbuser and open Jupyter-labs. Installed libraries are below,
 
