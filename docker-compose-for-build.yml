@@ -1,0 +1,53 @@
+version: "3"
+services:
+  japonica-warehouse:
+    image: takahish/japonica-warehouse:citus-11.2
+    container_name: japonica-warehouse
+    restart: always
+    environment:
+      POSTGRES_USER_FILE: /run/secrets/jwh_user
+      POSTGRES_PASSWORD_FILE: /run/secrets/jwh_password
+      POSTGRES_DB: jwh
+    ports:
+      - 5500:5432
+    volumes:
+      - ./warehouse:/var/lib/postgresql/data
+    networks:
+      - jwh-network
+    secrets:
+      - jwh_password
+      - jwh_user
+  scipy-notebook:
+    image: jupyter/scipy-notebook:python-3.10.10
+    networks:
+      - jwh-network
+  japonica-notebook:
+    image: takahish/japonica-notebook:python-3.10.10
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: japonica-notebook
+    restart: always
+    entrypoint: >
+      jupyter-lab
+      --ip=0.0.0.0
+      --port=8888
+      --no-browser
+      --NotebookApp.token='jnbuser'
+      --notebook-dir=/workspace
+    expose:
+      - 8800
+    ports:
+      - 127.0.0.1:8800:8888
+    volumes:
+      - ./:/workspace
+    networks:
+      - jwh-network
+networks:
+  jwh-network:
+    driver: bridge
+secrets:
+   jwh_password:
+     file: sec/jwh_password.txt
+   jwh_user:
+     file: sec/jwh_user.txt
