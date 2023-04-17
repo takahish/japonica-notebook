@@ -22,7 +22,7 @@ services:
     networks:
       - jwh-network
   japonica-notebook:
-    image: takahish/japonica-notebook:python-3.10.10
+    image: takahish/japonica-notebook:python-3.10.10.2
     build:
       context: ./
       dockerfile: Dockerfile

@@ -58,6 +58,8 @@ RUN pip install --no-cache-dir \
     'torchinfo' \
     'pytorch-lightning' \
     'transformers' \
+    'fugashi' \
+    'ipadic' \
     --extra-index-url https://download.pytorch.org/whl/cpu && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"

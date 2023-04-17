@@ -52,6 +52,7 @@ You can access http://localhost:8801/login?token=jnbuser and open Jupyter-labs. 
     - pymc3, xgboost, lightgbm, shap
     - tensorflow, tensorboard, tensorflow-probability for CPU setting
     - torch, torchvision, torchaudio, torchtext, pytorch-lightning, transformers for CPU setting
+    - fugashi, ipadic for morphological analysis.
 
 Especially, GPU settings for TensorFlow and PyTorch will be set in the future.
 
