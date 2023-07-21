@@ -13,7 +13,7 @@ services:
     volumes:
       - ./warehouse:/var/lib/postgresql/data
     networks:
-      - jwh-network
+      - jnb-network
     secrets:
       - jwh_password
       - jwh_user
@@ -29,11 +29,11 @@ services:
       PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.jp
       PGADMIN_DEFAULT_PASSWORD: pgadmin
     networks:
-      - jwh-network
+      - jnb-network
     depends_on:
       - japonica-warehouse
   japonica-notebook:
-    image: takahish/japonica-notebook:python-3.10.10.2
+    image: takahish/japonica-notebook:python-3.10.10.3
     container_name: japonica-notebook
     restart: always
     entrypoint: >
@@ -50,9 +50,9 @@ services:
     volumes:
       - ./:/workspace
     networks:
-      - jwh-network
+      - jnb-network
 networks:
-  jwh-network:
+  jnb-network:
     driver: bridge
 secrets:
    jwh_password:

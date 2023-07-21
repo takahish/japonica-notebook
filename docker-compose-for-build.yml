@@ -13,16 +13,16 @@ services:
     volumes:
       - ./warehouse:/var/lib/postgresql/data
     networks:
-      - jwh-network
+      - jnb-network
     secrets:
       - jwh_password
       - jwh_user
   scipy-notebook:
     image: jupyter/scipy-notebook:python-3.10.10
     networks:
-      - jwh-network
+      - jnb-network
   japonica-notebook:
-    image: takahish/japonica-notebook:python-3.10.10.2
+    image: takahish/japonica-notebook:python-3.10.10.3
     build:
       context: ./
       dockerfile: Dockerfile
@@ -42,9 +42,9 @@ services:
     volumes:
       - ./:/workspace
     networks:
-      - jwh-network
+      - jnb-network
 networks:
-  jwh-network:
+  jnb-network:
     driver: bridge
 secrets:
    jwh_password:

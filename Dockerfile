@@ -63,3 +63,7 @@ RUN pip install --no-cache-dir \
     --extra-index-url https://download.pytorch.org/whl/cpu && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+# We add a postgres_cstore package for python into the system site-packages.
+# See also https://github.com/takahish/postgres-cstore
+COPY lib/japonica-warehouse/japonica_warehouse/ /opt/conda/lib/python3.10/site-packages/japonica_warehouse

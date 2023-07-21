@@ -42,6 +42,7 @@ $ docker-compose up -d
 You can access http://localhost:8801/login?token=jnbuser and open Jupyter-labs. Installed libraries are below,
 
 - japonica-warehouse as data store.
+    - https://github.com/takahish/japonica-warehouse
     - You can connect data warehouse with python client.
 - Originally scipy-notebook has the basic python libraries such as,
     - Everything in jupyter/minimal-notebook and its ancestor images
